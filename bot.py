@@ -28,13 +28,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # ── Variables de entorno ──────────────────────
-MISTRAL_API_KEY          = os.environ["MISTRAL_AI_API_KEY"]
-WHATSAPP_API_TOKEN       = os.environ["WHATSAPP_API_TOKEN"]
-WHATSAPP_PHONE_NUMBER_ID = os.environ["WHATSAPP_PHONE_NUMBER_ID"]
-WHATSAPP_VERIFY_TOKEN    = os.environ["WHATSAPP_VERIFY_TOKEN"]
-GRAPH_API_VERSION        = os.environ.get("GRAPH_API_VERSION", "v18.0")
-SUPABASE_URL             = os.environ["SUPABASE_URL"]
-SUPABASE_KEY             = os.environ["SUPABASE_KEY"]
+MISTRAL_API_KEY          = os.getenv("MISTRAL_AI_API_KEY")
+WHATSAPP_API_TOKEN       = os.getenv("WHATSAPP_API_TOKEN")
+WHATSAPP_PHONE_NUMBER_ID = os.getenv("WHATSAPP_PHONE_NUMBER_ID")
+WHATSAPP_VERIFY_TOKEN    = os.getenv("WHATSAPP_VERIFY_TOKEN")
+GRAPH_API_VERSION        = os.getenv("GRAPH_API_VERSION", "v18.0")
+SUPABASE_URL             = os.getenv("SUPABASE_URL")
+SUPABASE_KEY             = os.getenv("SUPABASE_KEY")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 mistral = Mistral(api_key=MISTRAL_API_KEY)
