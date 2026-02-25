@@ -254,6 +254,9 @@ GRAPH_BASE = f"https://graph.facebook.com/{GRAPH_API_VERSION}"
 
 def enviar_mensaje_whatsapp(wa_id: str, texto: str):
     """Envía un mensaje de texto a un número de WhatsApp via Graph API."""
+    # Normalizar números argentinos: Meta envía 5492XXXXXXXX pero el sandbox requiere 542XXXXXXXX
+    if wa_id.startswith("5492") and len(wa_id) == 13:
+        wa_id = "54" + wa_id[4:]
     url = f"{GRAPH_BASE}/{WHATSAPP_PHONE_NUMBER_ID}/messages"
     headers = {
         "Authorization": f"Bearer {WHATSAPP_API_TOKEN}",
