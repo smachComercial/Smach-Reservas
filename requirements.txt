@@ -4,4 +4,3 @@ mistralai
 httpx
 supabase
 python-dotenv
-
