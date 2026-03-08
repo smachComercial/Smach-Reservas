@@ -363,11 +363,20 @@ def verificar_comprobante(
 
 Tu tarea es extraer la información visible y verificar si cumple los criterios. Leé con atención todo el texto de la imagen antes de responder.
 
+prompt = f"""Analizá esta imagen. Es un comprobante de transferencia bancaria enviado por un cliente para confirmar una reserva de pádel.
+
+Tu tarea es extraer la información visible y verificar si cumple los criterios. Leé con atención todo el texto de la imagen antes de responder.
+
 CRITERIOS A VERIFICAR (los tres deben cumplirse para que sea válido):
 1. TIPO: Debe ser un comprobante de transferencia bancaria. Puede ser de Mercado Pago, Naranja X, Brubank, BBVA, Galicia, Santander, Uala, o cualquier banco/billetera argentina.
 2. DESTINATARIO: El campo "Para", "Destinatario" o similar debe contener "{SENA_DESTINATARIO}". Aceptá variaciones como: "Roberto Alejandro Santillan", "Alejandro Santillan", "A. Santillan", con o sin tilde en la i. NO es necesario que sea exacto, solo que el apellido "Santillan" esté presente.
 3. MONTO: Debe ser exactamente ${monto_fmt} pesos. Puede aparecer como "${monto_fmt}", "$ {monto_fmt}", "{monto}" o similar.
-4. FECHA: Debe ser del día de hoy. Hoy es {fecha_hoy_larga} ({fecha_hoy}). Ignorá el nombre del día de la semana que aparezca en el comprobante — solo verificá que el número de día, mes y año coincidan con hoy ({fecha_hoy}).
+4. FECHA: Debe ser del día de hoy. Hoy es {fecha_hoy_larga} ({fecha_hoy}).
+   - Ignorá el nombre del día de la semana que aparezca en el comprobante.
+   - Verificá que el número de día y el mes coincidan con hoy.
+   - Para el año: aceptá tanto el formato completo ({ahora_arg().year}) como el formato corto ({str(ahora_arg().year)[2:]}). 
+   - Si el día y mes coinciden pero el año no aparece claramente o está en formato corto, considerá la fecha como válida.
+   - Solo rechazá por fecha si el día o el mes claramente no coinciden con hoy.
 
 SOBRE "ilegible":
 Poné ilegible: true SOLO si la imagen está tan borrosa, oscura o recortada que no podés leer NINGÚN texto. Si podés leer aunque sea parte del texto, poné ilegible: false y evaluá con lo que ves.
