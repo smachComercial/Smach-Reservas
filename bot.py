@@ -359,10 +359,6 @@ def verificar_comprobante(
     monto = monto_esperado if monto_esperado is not None else SENA_MONTO
     monto_fmt = f"{monto:,}".replace(",", ".")
 
-    prompt = f"""Analizá esta imagen. Es un comprobante de transferencia bancaria enviado por un cliente para confirmar una reserva de pádel.
-
-Tu tarea es extraer la información visible y verificar si cumple los criterios. Leé con atención todo el texto de la imagen antes de responder.
-
 prompt = f"""Analizá esta imagen. Es un comprobante de transferencia bancaria enviado por un cliente para confirmar una reserva de pádel.
 
 Tu tarea es extraer la información visible y verificar si cumple los criterios. Leé con atención todo el texto de la imagen antes de responder.
