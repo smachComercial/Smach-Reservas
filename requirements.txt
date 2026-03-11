@@ -1,7 +1,0 @@
-fastapi
-uvicorn[standard]
-mistralai>=1.0.0
-httpx
-supabase
-python-dotenv
-google-genai
