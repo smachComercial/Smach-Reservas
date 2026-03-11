@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+mistralai
+httpx
+supabase
+python-dotenv
+google-genai
