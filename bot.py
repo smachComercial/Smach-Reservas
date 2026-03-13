@@ -1,7 +1,7 @@
 """
 Bot de WhatsApp para Los Ciruelos Pádel
 Migrado de Telegram + Claude a WhatsApp Cloud API + Mistral.
-Conversación: mistral-small-latest | Visión: gemini-2.5-flash-lite | BD: Supabase
+Conversación: mistral-large-2411 | Visión: gemini-2.5-flash-lite | BD: Supabase
 """
 
 import os
@@ -726,14 +726,14 @@ def llamar_mistral(
     nombre_conocido: str = None,
 ) -> tuple:
     """
-    Llama a mistral-small-latest con el historial de conversación.
+    Llama a mistral-large-2411 con el historial de conversación.
     Retorna (texto_respuesta, accion_dict | None).
     """
     messages = [{"role": "system", "content": build_system(hoy, telefono_conocido, nombre_conocido)}]
     messages.extend(historial)
 
     response = mistral.chat.complete(
-        model="mistral-small-latest",
+        model="mistral-large-2411",
         max_tokens=800,
         messages=messages,
     )
